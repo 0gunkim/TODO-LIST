@@ -6,11 +6,13 @@ export const Additem = (props) => {
     console.log(item);
     const addInputRef = useRef(null);
     const onSubmitHandler = (e) => {
-        e.preventDefault();
-        console.log('버튼 동작');
         const title = addInputRef.current.value
         const id = nanoid()
-        setItem((item) => [...item, {id, title}])
+        e.preventDefault(); //리플레쉬 방지
+        if(title.trim().length === 0){
+            return;
+        }
+        setItem((item) => [...item, {id, title, status:'active'}])
         addInputRef.current.value = ''
     }
     
