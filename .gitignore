@@ -4,9 +4,10 @@
 /node_modules
 /.pnp
 .pnp.js
-
+/public/db.json
 # testing
 /coverage
+.env
 
 # production
 /build
