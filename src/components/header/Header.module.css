@@ -1,4 +1,51 @@
-.container{
- 
+.header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-bg-dark);
+    border-bottom: 1px solid var(--color-gray);
+}
+.toggle{
+    font-size: 3rem;
+    background-color: transparent;
+    color: var(--color-text);
+    cursor: pointer;
+
+    transition: all 200ms ease-out;
+    margin: 10px 0 0 10px
+}
+.toggle:hover{
+    transform: scale(1.2);
+    color: var(--color-accent);
+}
+.filters{
+    display: flex;
     
+}
+.filter{
+    font-size: 1.4rem;
+    margin: 0.2rem;
+    text-transform: capitalize;
+    background-color: transparent;
+    color: var(--color-accent);
+    opacity: 0.4;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+.filter:hover,
+.filter.selected {
+    opacity: 1;
+}
+.filter.selected::after{
+    content: '';
+    display: block;
+    margin-top: 0.2rem;
+    border: 1px solid var(--color-text)
+}
+
+
+button{
+    outline: none;
+    border:none;
 }

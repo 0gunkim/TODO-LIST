@@ -1,0 +1,45 @@
+.list{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    margin: 0.1rem 0;
+    color: var(--color-text);
+}
+
+.checkbox{
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid white;
+    accent-color: var(--color-accent);
+    border-radius: 50%;
+    appearance: none;
+    cursor: pointer;
+    transition:  0.2s;
+    outline:none;
+    margin-right: 0.5rem;
+}
+.checkbox:checked{
+    background-color: var(--color-accent);
+    border: none;
+}
+.text{
+    flex: 1 1 auto;
+}
+.icon{
+    width: 25px;
+    height: 25px;
+    background-color: var(--color-accent);
+    border-radius: 100%;
+    transition: all 200ms ease-out;
+    
+}
+.icon:hover {
+    background-color: var(--color-bg-dark);
+    transform: rotate(15deg) scale(1.5);
+}
+.button{
+ background-color: transparent;
+ color:var(--color-text);
+
+ cursor: pointer;
+}
