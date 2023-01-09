@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AddItem } from '../AddItem/AddItem';
 import { TodoItem } from '../TodoItem/TodoItem';
 import styles from './TodoList.module.css'
 export const TodoList = ({filter}) => {
-    const [todo, setTodo] = useState(mockData);
+    const [todo, setTodo] = useState(readTodo);
 
     const onAddHandle = (a) => (
         setTodo([...todo, a])
+
         );
 
     const onDeleteHandle = (d) => (
@@ -14,8 +15,13 @@ export const TodoList = ({filter}) => {
         )
 
     const onUpdateHandle = (u) => (
+        
         setTodo(todo.map((m)=> (m.id === u.id ? u : m)))
         );
+
+    useEffect(()=> {
+        localStorage.setItem('todo', JSON.stringify(todo));
+    },[todo])
 
     const filtered = getFilteredItems(todo, filter);
     return(
@@ -40,20 +46,25 @@ function getFilteredItems(todo, filter) {
     return todo.filter(todo => todo.status === filter)
 }
 
-const mockData = [
-    {
-        id: '1',
-        title:'놀아보기',
-        status: 'active'
-    },
-    {
-        id: '3',
-        title:'2놀아보기',
-        status: 'active'
-    },
-    {
-        id: '4',
-        title:'3놀아보기',
-        status: 'completed'
-    },
-]
+function readTodo() {
+    const todo = localStorage.getItem('todo');
+    return todo ? JSON.parse(todo) : [];
+}
+
+// const mockData = [
+//     {
+//         id: '1',
+//         title:'놀아보기',
+//         status: 'active'
+//     },
+//     {
+//         id: '3',
+//         title:'2놀아보기',
+//         status: 'active'
+//     },
+//     {
+//         id: '4',
+//         title:'3놀아보기',
+//         status: 'completed'
+//     },
+// ]

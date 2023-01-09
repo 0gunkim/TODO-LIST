@@ -23,6 +23,8 @@
     border: none;
 }
 .text{
+    cursor: pointer;
+
     flex: 1 1 auto;
 }
 .icon{

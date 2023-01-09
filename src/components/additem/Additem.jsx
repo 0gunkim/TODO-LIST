@@ -5,14 +5,15 @@ export const AddItem = ({onAddHandle}) => {
     const AddInputRef = useRef();
     const onSubmitHandle = (e) => {
         e.preventDefault();
+        e.stopPropagation();
         if(AddInputRef.current.value.trim().length === 0){
             return;
         }
         const title = AddInputRef.current.value
         const id = nanoid();
-        console.log(id)
         const status = 'active';
         onAddHandle({title ,id, status})
+
         AddInputRef.current.value = "";
     };
 
