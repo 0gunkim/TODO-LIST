@@ -1,10 +1,12 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { AddItem } from '../AddItem/AddItem';
 import { TodoItem } from '../TodoItem/TodoItem';
 import styles from './TodoList.module.css'
 export const TodoList = ({filter}) => {
     const [todo, setTodo] = useState(readTodo);
-
+    const [fetchTo, setFetchTo] = useState();
+    console.log(fetchTo)
     const onAddHandle = (a) => (
         setTodo([...todo, a])
 
@@ -18,9 +20,15 @@ export const TodoList = ({filter}) => {
         
         setTodo(todo.map((m)=> (m.id === u.id ? u : m)))
         );
+    const fetchTodo = async () => {
+        const {data} = await axios.get("http://localhost:5500/todo");
+        setFetchTo(data);
+        
+    }
 
     useEffect(()=> {
         localStorage.setItem('todo', JSON.stringify(todo));
+        fetchTodo();
     },[todo])
 
     const filtered = getFilteredItems(todo, filter);
